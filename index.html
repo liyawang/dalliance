@@ -1,0 +1,130 @@
+<!DOCTYPE html> 
+
+<html>
+
+<head>
+<style>
+</style>
+
+<title>Sorghum bicolor :: Dalliance</title> 
+<script language="javascript" src="build/dalliance-all.js"></script>
+<script language="javascript">
+
+var g = {
+id: 'test',
+region: '1',
+start: 1202000,
+end: 1217000,
+species: 'Sorghum bicolor',
+taxon_id: 4558,
+system_name: 'sorghum_bicolor'
+};
+
+var b = new Browser({
+        chr: g.region,
+        viewStart: g.start,
+        viewEnd: g.end,
+        cookieKey: g.id + 'BrowserCookie',
+        
+        coordSystem: {
+          speciesName: g.species,
+          taxon: g.taxon_id,
+          auth: 'Sbi',
+          version: '1',
+	  ucscName: 'Sorghum'
+        },
+	
+	maxWorkers: 3,
+
+	sources: [
+        {
+            name: 'DNA',
+            ensemblURI: 'http://data.gramene.org/ensembl',
+            species: g.system_name,
+            tier_type: 'sequence'
+        },
+        {
+            name: 'Genes',
+	    desc: 'Gene structures from Sorbi1.34',
+            bwgURI: '//data.sciapps.org/sorghum/default/Sorghum_bicolor.Sorbi1.34.bb',
+            stylesheet_uri: '//www.biodalliance.org/stylesheets/gencode.xml',
+            collapseSuperGroups: true,
+            trixURI: '//data.sciapps.org/sorghum/default/Sorghum_bicolor.Sorbi1.34.ix'
+        },
+	{
+	    name: "MNase",
+	    bwgURI: "http://data.sciapps.org/sorghum/MNase/MNase.bw",
+	    style: [{type: 'default', style: {glyph: 'BOX', BGCOLOR: 'rgb(8,104,172)', HEIGHT: 10, id: 'style1'}}], 
+                        noDownsample: true
+	},
+        {
+            name: "H3K4me3_rep1",
+            bwgURI: "http://data.sciapps.org/sorghum/Chipseq/reps/H3K4me3_rep1.bw",
+            style: [{type: 'default', style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(255,128,0)', HEIGHT: 30, id: 'style1'}}],
+                       noDownsample: true
+        },
+	{
+	    name: "H3K4me3",
+	    bwgURI: "http://data.sciapps.org/sorghum/Chipseq/H3K4me3.bw",
+	    style: [{type: 'default', style: {glyph: 'BOX', BGCOLOR: 'rgb(255,128,0)', HEIGHT: 10, id: 'style1'}}], 
+                       noDownsample: true
+	},
+        {
+            name: "H3K27me3_rep1",
+            bwgURI: "http://data.sciapps.org/sorghum/Chipseq/reps/H3K27me3_rep1.bw",
+            style: [{type: 'default', style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(0,191,255)', HEIGHT: 30, id: 'style1'}}],
+                       noDownsample: true
+        },
+        {
+            name: "H3K27me3",
+            bwgURI: "http://data.sciapps.org/sorghum/Chipseq/H3K27me3.bw",
+            style: [{type: 'default', style: {glyph: 'BOX', BGCOLOR: 'rgb(0,191,255)', HEIGHT: 10, id: 'style1'}}],      
+                       noDownsample: true
+        },
+        {
+            name: "CpG",
+            bwgURI: "http://data.sciapps.org/sorghum/WGBS/CG.bw",
+            style: [{type: 'default', style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(128,128,128)', HEIGHT: 30, id: 'style1'}}],      
+                       noDownsample: true
+        },
+        {
+            name: "CHG",
+            bwgURI: "http://data.sciapps.org/sorghum/WGBS/CHG.bw",
+            style: [{type: 'default', style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(134,121,121)', HEIGHT: 30, id: 'style1'}}],
+                       noDownsample: true
+        },
+        {
+            name: "CHH",
+            bwgURI: "http://data.sciapps.org/sorghum/WGBS/CHH.bw",
+            style: [{type: 'default', style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(140,115,115)', HEIGHT: 30, id: 'style1'}}],
+                       noDownsample: true
+        },
+        {
+            name: "sRNA_apex",
+            bwgURI: "http://data.sciapps.org/sorghum/sRNA/sRNA_Root_Tip_024.bw",
+            style: [{type: 'default', style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(140,115,115)', HEIGHT: 30, id: 'style1'}}],
+                       noDownsample: true
+        },
+	{
+	    name: "Repeats",
+	    bwgURI: "http://data.sciapps.org/sorghum/default/Sorghum_bicolor.Sorbi1.33.chr.repeat.sorted.bb",
+            style: [{type: 'default', style: {glyph: 'BOX', BGCOLOR: 'rgb(128,128,128)', HEIGHT: 10, id: 'style1'}}],
+                       noDownsample: true
+	}
+    ],
+
+    hubs: ['http://data.sciapps.org/sorghum/hubs/hub.txt'],
+
+    uiprefix: 'http://data.sciapps.org/view/build/',
+    fullScreen: true,
+
+  });
+
+</script>
+</head>
+
+<body>
+<div id='svgHolder'>Failed to load the Biodalliance genome browser.  Have you run "gulp"?</div>
+</body>
+</html>
+
